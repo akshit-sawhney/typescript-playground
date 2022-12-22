@@ -23,7 +23,6 @@ async function getAkshit() {
         const res = await akshitController.getAkshit()
         logger.infoj('Get Call success response: ', res);
     } catch (error) {
-        console.log('error: ', error);
         logger.errorj('Get Call error response: ', error);
     }
 }
