@@ -1,5 +1,6 @@
 const sharp = require("sharp");
 const logger = require("../helpers/logger");
+const uploadHandler = require('../s3/upload');
 
 function resize_90_90() {
   sharp("./media/images/a.jpeg")
@@ -11,6 +12,7 @@ function resize_90_90() {
         logger.infoj(`Success in file resize: `, info);
       }
     });
+    uploadHandler.uploadFile('./media/images/a.jpeg');
 }
 
 resize_90_90();
