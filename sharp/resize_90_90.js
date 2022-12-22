@@ -8,7 +8,7 @@ function resize_90_90() {
       if (err) {
         logger.error(`Error in file resize: ${err}`);
       } else {
-        logger.info(`Success in file resize: ${JSON.stringify(info)}`);
+        logger.infoj(`Success in file resize: `, info);
       }
     });
 };
