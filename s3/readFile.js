@@ -8,21 +8,21 @@ const s3 = new AWS.S3({
   region: constants.AWS_REGION,
 });
 
-async function readFileHandler() {
+async function readFileHandler(key) {
   const paramsGET = {
     Bucket: "quizizz-static-dev",
-    Key: "_media_v2/01a58ac0-cd65-4dfe-b266-284faea896f7.jpeg",
+    Key: key,
   };
 
   try {
     s3Response = await s3.getObject(paramsGET).promise();
     return s3Response.Body;
   } catch (e) {
-    logger.errorj('Reading file error: ', e);
+    logger.errorj("Reading file error: ", e);
     return;
   }
 }
 
 module.exports = {
-    readFileHandler
-}
+  readFileHandler,
+};

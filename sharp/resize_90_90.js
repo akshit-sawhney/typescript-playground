@@ -1,7 +1,5 @@
 const sharp = require("sharp");
 const logger = require("../helpers/logger");
-const uploadHandler = require('../s3/upload');
-const readFileHandler = require('../s3/readFile').readFileHandler;
 
 function resize_90_90() {
   sharp("./media/images/a.jpeg")
@@ -15,24 +13,8 @@ function resize_90_90() {
     });
 }
 
-async function resizeS3() {
-  const s3File = await readFileHandler();
-  console.log(s3File);
-  sharp(s3File)
-    .resize(90)
-    .toBuffer(function (err, data) {
-      if(err) {
-        logger.errorj('Error in Sharp: ', err);
-      } else {
-        uploadHandler.uploadFile(data);
-      }
-    });
-}
-
-// resize_90_90();
-
 async function main() {
-  await resizeS3();
+  resize_90_90();
 }
 
 main();
