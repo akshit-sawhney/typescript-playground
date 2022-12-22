@@ -1,5 +1,5 @@
 const sharp = require("sharp");
-const logger = require('../helpers/logger');
+const logger = require("../helpers/logger");
 
 function resize_90_90() {
   sharp("./media/images/a.jpeg")
@@ -11,6 +11,6 @@ function resize_90_90() {
         logger.infoj(`Success in file resize: `, info);
       }
     });
-};
+}
 
 resize_90_90();
