@@ -9,13 +9,13 @@ const s3 = new AWS.S3({
     region: constants.AWS_REGION,
 });
 
-const uploadFile = (fileName) => {
-    const fileContent = fs.readFileSync(fileName);
+const uploadFile = (fileContent) => {
 
     const params = {
         Bucket: 'quizizz-static-dev',
         Key: '_media_v2/cat.jpeg',
-        Body: fileContent
+        Body: fileContent,
+        ACL: 'public-read',
     };
 
     s3.upload(params, function(err, data) {
