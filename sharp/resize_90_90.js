@@ -1,11 +1,15 @@
 const sharp = require("sharp");
-const chalk = require("chalk");
+const logger = require('../helpers/logger');
 
 function resize_90_90() {
   sharp("./media/images/a.jpeg")
     .resize(90)
     .toFile("./media/images/a_90_90.jpeg", (err, info) => {
-      console.log(`File resize log: ${chalk.red(`Error: ${err}`)} :: ${chalk.blue(`Info: ${JSON.stringify(info)}`)}`);
+      if (err) {
+        logger.error(`Error in file resize: ${err}`);
+      } else {
+        logger.info(`Success in file resize: ${JSON.stringify(info)}`);
+      }
     });
 };
 
