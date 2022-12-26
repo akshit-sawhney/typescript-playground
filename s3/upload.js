@@ -14,6 +14,10 @@ const uploadFile = (fileContent, key) => {
     Key: key,
     Body: fileContent,
     ACL: "public-read",
+    Metadata: {
+      'x-amz-meta-image-processed': '1'
+    },
+    CacheControl: 'public, max-age=31536000',
   };
 
   s3.upload(params, function (err, data) {
