@@ -16,7 +16,8 @@ async function readFileHandler(key) {
 
   try {
     s3Response = await s3.getObject(paramsGET).promise();
-    return s3Response.Body;
+    console.log('here: ', s3Response);
+    return s3Response;
   } catch (e) {
     logger.errorj("Reading file error: ", e);
     return;

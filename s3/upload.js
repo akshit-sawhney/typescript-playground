@@ -8,14 +8,17 @@ const s3 = new AWS.S3({
   region: constants.AWS_REGION,
 });
 
-const uploadFile = (fileContent, key) => {
+const uploadFile = (fileContent, key, contentType) => {
+  console.log('contentType: ', contentType);
   const params = {
     Bucket: "quizizz-static-dev",
     Key: key,
     Body: fileContent,
     ACL: "public-read",
+    ContentType: contentType,
     Metadata: {
-      'x-amz-meta-image-processed': '1'
+      'x-amz-meta-image-processed': '1',
+      'Content-Type': contentType,
     },
     CacheControl: 'public, max-age=31536000',
   };

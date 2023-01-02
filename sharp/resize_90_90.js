@@ -2,9 +2,10 @@ const sharp = require("sharp");
 const logger = require("../helpers/logger");
 
 function resize_90_90() {
-  sharp("./media/images/a.jpeg")
+  sharp("./media/images/svg-file.png")
     .resize(90)
-    .toFile("./media/images/a_90_90.jpeg", (err, info) => {
+    .toFormat('png')
+    .toFile("./media/images/resized-svg-file-png", (err, info) => {
       if (err) {
         logger.error(`Error in file resize: ${err}`);
       } else {
