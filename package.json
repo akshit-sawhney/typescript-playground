@@ -18,6 +18,7 @@
     "dotenv": "^16.0.3",
     "dynamoose": "^3.1.0",
     "file-type": "^18.0.0",
+    "is-svg": "^4.3.2",
     "kraken": "^0.4.0",
     "mime": "^3.0.0",
     "name2mime": "^1.0.1",
