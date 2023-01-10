@@ -21,7 +21,7 @@ async function resizeS3(key) {
 }
 
 async function main() {
-  await resizeS3("_media_v2/01a58ac0-cd65-4dfe-b266-284faea896f7.jpeg");
+  await resizeS3("_media_v2/image-file");
 }
 
 main();

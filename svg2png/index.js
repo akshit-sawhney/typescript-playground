@@ -1,12 +1,18 @@
 const fs = require("pn/fs");
 const svg2png = require("svg2png");
+const readFileHandler = require("../s3/readFile").readFileHandler;
 
-fs.readFile("media/images/5c387e36-4070-401c-ab5a-b6f77cc996a7-v2").then(
-  (buffer) => {
-    svg2png(buffer, { width: 600 })
-      .then((buffer) => fs.writeFile("media/images/dest.png", buffer))
-      .catch((e) => {
-        console.error(e);
-      });
-  }
-);
+async function main() {
+  console.time("svg2pngUsingRemote");
+  const s3File = await readFileHandler("_media_v2/svg-file");
+  svg2png(s3File.Body, { width: 600 })
+    .then(buffer => {
+      fs.writeFile("media/images/dest.png", buffer)
+      console.timeEnd("svg2pngUsingRemote");
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+}
+
+main();
