@@ -8,13 +8,12 @@ emitter.on('success', (payload) => console.info(payload));
 emitter.on('error', (payload) => console.error(payload));
 
 const sqs = new SQS('sqs', emitter, {});
-sqs.init();
-setTimeout(function() {
-    try {
-        console.log('here: ', sqs);
-        // console.log(sqs.getQueueUrl('media-service-try-akshit'));   
-    } catch (error) {
-        console.log('fucked up');
-    }
-},1);
+sqs.init()
+.then(res => {
+    console.log('here: ', sqs);
+    console.log('here: ', res);
+})
+.catch(err => {
+    console.log('fucked up');
+})
 
