@@ -10,7 +10,7 @@ const s3 = new AWS.S3({
 
 async function readFileHandler(key) {
   const paramsGET = {
-    Bucket: "quizizz-static-dev",
+    Bucket: "quizizz-static",
     Key: key,
   };
 

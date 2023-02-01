@@ -15,6 +15,7 @@
     "aws-sdk": "^2.1273.0",
     "axios": "^1.2.1",
     "chalk": "^4.1.2",
+    "detect-file-type": "^0.2.8",
     "dotenv": "^16.0.3",
     "dynamoose": "^3.1.0",
     "file-type": "^18.0.0",
