@@ -14,7 +14,7 @@ async function createAkshit() {
 }
 
 async function getAkshit() {
-  const results = await Akshit.query("id").eq("2").exec();
+  const results = await Akshit.scan("status").eq("failed").count().exec();
   return results;
 }
 

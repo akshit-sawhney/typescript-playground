@@ -27,5 +27,5 @@ async function getAkshit() {
     }
 }
 
-createFunction();
-// getAkshit();
+// createFunction();
+getAkshit();

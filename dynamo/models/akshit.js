@@ -3,12 +3,12 @@ const dynamoose = require('dynamoose');
 
 
 const componentSchema = new dynamoose.Schema({
-  id: {
+  key: {
     type: String,
     required: true,
   },
 
-  name: {
+  status: {
     type: String,
     required: true
   },
@@ -18,7 +18,7 @@ const componentSchema = new dynamoose.Schema({
 
 
 module.exports = dynamoose.model(
-  'dev-media-akshit',
+  'prod-media-status',
   componentSchema,
 );
 
