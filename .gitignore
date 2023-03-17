@@ -4,3 +4,5 @@ package-lock.json
 .DS_Store
 media/images/
 constants/index.js
+webflow_crowdin/core_project_jsons/
+webflow_crowdin/existing_project_jsons/
