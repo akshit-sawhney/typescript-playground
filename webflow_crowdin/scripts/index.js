@@ -3,7 +3,6 @@ const axios = require("axios");
 
 const TRANSLATE_API = "http://localhost:8080/v1/translations/googleTranslate";
 
-const convertedJSON = {};
 function getMasterJSONData() {
   let masterJSONFile = fs.readFileSync(
     "webflow_crowdin/core_project_jsons/master.json"
@@ -29,7 +28,9 @@ function saveGeneratedJSON(locale, convertedJSON) {
   }
 }
 
-async function main(locale) {
+async function start(locale) {
+  console.log('hit here: ', locale);
+  const convertedJSON = {};
   const masterJSONData = getMasterJSONData();
   const existingJSONData = getExistingProjectJSONData(locale);
 
@@ -68,6 +69,14 @@ async function main(locale) {
   }
 
   saveGeneratedJSON(locale, convertedJSON);
+  return;
 }
 
-main(process.argv[2]);
+async function main() {
+  const allLocales = ['az', 'de', 'es', 'fr', 'id', 'it', 'ja', 'ms', 'pl', 'pt', 'ru', 'th', 'tl', 'tr', 'vi', 'zh-CN', 'zh-TW'];
+  for (let i=0; i< allLocales.length; i++) {
+    await start(allLocales[i]);
+  }
+}
+
+main();
