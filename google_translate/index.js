@@ -1,6 +1,7 @@
 const { Translate } = require("@google-cloud/translate").v2;
 const dotenv = require("dotenv");
 dotenv.config();
+const logger = require('../helpers/logger');
 
 function privateKey(val) {
   if (!val) {
@@ -29,15 +30,15 @@ const text = "I spea russian";
  * @param {string} to The destination language
  * @returns {string} Translated text
  */
-async function translateText(text, from, to) {
+async function translateHandler(text, from, to) {
   const translationOptions = { from, to };
   let [translation] = await translate.translate(text, translationOptions);
   return translation;
 }
 
 async function main() {
-  const translatedText = await translateText(text, 'en', 'ru');
-  console.log('response: ', translatedText);
+  const response = await translateHandler(text, 'en', 'ru');
+  logger.infoj('response:', response);
 }
 
 main();
