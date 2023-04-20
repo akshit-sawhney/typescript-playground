@@ -32,7 +32,6 @@ async function generateResponse(keywords) {
       Make sure output text is SEO Friendly.
       Try to put the keywords in the first half of the output.
       Make sure output is in context of worksheet pages.
-      Make sure that we maintain the nomenclature for the grade in all sentences.
       Make sure the output provides high intent to click.
       Make sure output text is less than 160 characters. 
       Make sure the output text generated is with the context of worksheets on Quizizz.
