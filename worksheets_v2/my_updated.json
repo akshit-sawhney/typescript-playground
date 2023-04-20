@@ -1,1 +1,36 @@
-{"grade-1":{"display":"Grade 1","name":"grade-1","children":{"ela":{"name":"ela","display":"Reading \\u0026 Writing","topics":{"reading":{"name":"reading","display":"Reading","children":{"early-literacy-concepts":{"name":"early-literacy-concepts","display":"Early Literacy","children":{"concepts-of-print":{"name":"concepts-of-print","display":"Concepts of Print","children":{},"meta_description":"Explore Concepts of Print worksheets for Grade 1, Reading & Writing in free, pdf format! Engage your students with these high-quality resources on Quizizz."}},"meta_description":"Boost your Grade 1 students' reading & writing skills with free, pdf Early Literacy worksheets! Engage and inspire young learners on Quizizz today."}},"meta_description":"Explore free Reading worksheets for Grade 1 in pdf format, focusing on Reading & Writing skills. Engage your students with Quizizz's interactive worksheets!"}},"meta_description":"Download free Reading & Writing worksheets for Grade 1 in pdf format! Engage your students with high-quality, interactive resources on Quizizz. Click now!"}},"meta_description":"Grade 1 worksheets: Download free, high-quality PDFs for teachers seeking engaging activities to enhance learning. Click now for instant access on Quizizz!"}}
+{
+    "grade-1": {
+        "display": "Grade 1",
+        "name": "grade-1",
+        "children": {
+            "ela": {
+                "name": "ela",
+                "display": "Reading \\u0026 Writing",
+                "topics": {
+                    "reading": {
+                        "name": "reading",
+                        "display": "Reading",
+                        "children": {
+                            "early-literacy-concepts": {
+                                "name": "early-literacy-concepts",
+                                "display": "Early Literacy",
+                                "children": {
+                                    "concepts-of-print": {
+                                        "name": "concepts-of-print",
+                                        "display": "Concepts of Print",
+                                        "children": {},
+                                        "meta_description": "Explore Concepts of Print worksheets for Grade 1, featuring Reading & Writing activities in free, pdf format. Engage your students with these high-quality resources on Quizizz and enhance their learning experience."
+                                    }
+                                },
+                                "meta_description": "Download free Early Literacy worksheets for Grade 1 in pdf format, focusing on Reading & Writing skills. Engage your students with these high-quality resources on Quizizz!"
+                            }
+                        },
+                        "meta_description": "Download free Reading worksheets for Grade 1 in pdf format, focusing on Reading & Writing skills. Engage your students with high-quality content on Quizizz!"
+                    }
+                },
+                "meta_description": "Download free Reading & Writing worksheets for Grade 1 in pdf format! Engage your students with high-quality, interactive content on Quizizz. Click now!"
+            }
+        },
+        "meta_description": "Grade 1 worksheets: free, pdf resources for teachers to enhance learning. Download now on Quizizz and elevate your students' success!"
+    }
+}

@@ -12,10 +12,9 @@ async function readJSONFile(filePath) {
   }
 }
 
-function writeJSONFile(filePath, data) {
+async function writeJSONFile(filePath, data) {
   try {
-    const jsonData = JSON.stringify(data);
-    fs1.writeFileSync(filePath, jsonData);
+    await fs.writeFile(filePath, JSON.stringify(data, null, 4));
   } catch (error) {
     console.log(`Error while writing ${filePath}: ${error}`);
   }

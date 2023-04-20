@@ -4,7 +4,7 @@ const openai = axios.create({
   baseURL: 'https://api.openai.com/v1',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer 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',
+    'Authorization': 'Bearer token_here',
   },
 });
 
@@ -38,7 +38,7 @@ async function generateResponse(keywords) {
       Make sure the output text generated is with the context of worksheets on Quizizz.
       Make sure that output does not have exact sentences or phrases from the internet.
       The first sentence should talk about keywords, and second one should concentrate on providing high intent to click.
-      Do not use word [Discover, SEO, Boost].
+      Do not use words: [Discover, SEO, Boost].
       `,
     },
   ];
