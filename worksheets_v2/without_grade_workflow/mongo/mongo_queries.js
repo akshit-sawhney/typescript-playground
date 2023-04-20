@@ -73,12 +73,19 @@ async function getSiblings(currentNodeName, gradeName) {
   return siblingDocs;
 }
 
+async function getCompleteHierarchy() {
+  const docs = await WorksheetHierarchies.find();
+  console.log("getCompleteHierarchy response: ", docs);
+  return docs;
+}
+
 async function main() {
   await boot();
   //   await getAllGrades();
   //   await searchByKeyword('the-arts', 'kg');
   // await getImmediateChildren("643f81d6ebeef01c2b8d4f4a");
-  await getSiblings("colors", "kg");
+  // await getSiblings("colors", "kg");
+  await getCompleteHierarchy();
   process.exit(0);
 }
 
