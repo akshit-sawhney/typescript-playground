@@ -18,9 +18,9 @@ async function boot() {
     dbName: 'quizizz',
   });
   WorksheetHierarchies = mongoose.model(
-    'worksheetHierarchy_without_grade',
+    'worksheetHierarchy',
     worksheetHierarchySchema,
-    'worksheetHierarchy_without_grade',
+    'worksheetHierarchy',
   );
 }
 

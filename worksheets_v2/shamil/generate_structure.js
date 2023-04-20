@@ -1,6 +1,5 @@
 const fs = require('fs/promises');
 const fs1 = require("fs");
-const { generateResponse } = require('./generate_meta_text');
 
 async function readJSONFile(filePath) {
   try {
@@ -20,30 +19,27 @@ async function writeJSONFile(filePath, data) {
   }
 }
 
-const allPrompts = [];
+const allNodes = [];
 
 async function handleNode(node, parentNode, previousDisplays = [], gradeDisplay) {
   for (const [key, value] of Object.entries(node)) {
     if (key === 'display') {
       let promptResponse;
       if (value === gradeDisplay) {
-        const keywords = `${value} worksheets`;
-        promptResponse = await generateResponse(keywords);
-        allPrompts.push(keywords);
-        console.log('keywords: ', keywords);
-        console.log('output: ', promptResponse);
-        node.meta_description = promptResponse;
+        allNodes.push({
+            name: node.name,
+            display: node.display,
+            grade: gradeDisplay,
+        });
       } else {
-        let parentNodeDisplays;
-        if (previousDisplays && previousDisplays.length) {
-          parentNodeDisplays = previousDisplays[0]
-        }
-        const keyword = `${value} worksheets for ${gradeDisplay}, ${parentNodeDisplays ? parentNodeDisplays : ''}`;
-        promptResponse = await generateResponse(keyword);
-        allPrompts.push(keyword);
-        console.log('keywords: ', keyword);
-        console.log('output: ', promptResponse);
-        node.meta_description = promptResponse;
+        allNodes.push({
+            name: node.name,
+            display: node.display,
+            grade: gradeDisplay,
+            subject: previousDisplays? previousDisplays[0]: null,
+            topic: previousDisplays? previousDisplays[1]: null,
+            sub_topic: previousDisplays? previousDisplays[2]: null
+        })
       }
     } else if (key === 'name') {
       // eslint-disable-next-line no-continue
@@ -63,7 +59,9 @@ async function parseHierarchy() {
   for (const value of Object.values(masterJSONData)) {
     await handleNode(value, null, [], value.display);
   }
-  writeJSONFile('worksheets_v2/my_updated_meta_descriptions.json', masterJSONData);
+  console.log('done');
+  console.log(allNodes);
+  writeJSONFile('worksheets_v2/shamil/output.json', allNodes);
 }
 
 async function main() {
