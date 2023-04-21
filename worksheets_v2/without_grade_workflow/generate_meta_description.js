@@ -25,7 +25,8 @@ const allPrompts = [];
 async function handleNode(node, parentNode, previousDisplays = [], gradeDisplay) {
   for (const [key, value] of Object.entries(node)) {
     if (key === 'display') {
-      let promptResponse;
+      if (!node.meta_description) {
+        let promptResponse;
       if (value === gradeDisplay) {
         if (value) {
           const keywords = `${value} worksheets`;
@@ -52,7 +53,11 @@ async function handleNode(node, parentNode, previousDisplays = [], gradeDisplay)
         console.log('output: ', promptResponse);
         node.meta_description = promptResponse;
       }
-    } else if (key === 'name') {
+      } else {
+        continue;
+      }
+      
+    } else if (key === 'name' || key === 'meta_description') {
       // eslint-disable-next-line no-continue
       continue;
     } else {
