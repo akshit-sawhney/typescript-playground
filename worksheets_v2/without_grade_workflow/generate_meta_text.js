@@ -1,10 +1,12 @@
 const axios = require('axios');
+const dotenv = require("dotenv");
+dotenv.config();
 
 const openai = axios.create({
   baseURL: 'https://api.openai.com/v1',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer token_here',
+    'Authorization': `Bearer ${process.env.GPT_KEY}`,
   },
 });
 
