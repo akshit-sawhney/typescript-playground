@@ -34,6 +34,8 @@ async function translateText(text, from, to) {
     const translationResponse = apiResponse.data.data;
     return translationResponse.translatedText;
   } catch (error) {
+    console.log('failed: ');
+    console.log(text);
     console.log(
       `Error while translating "${text}" from ${from} to ${to}: ${error}`
     );
@@ -60,7 +62,7 @@ async function start(locale, masterJSONData) {
   console.log(`Started translation for ${locale}`);
   const convertedJSON = await translateMissingText(locale, masterJSONData);
   writeJSONFile(
-    `webflow_crowdin/worksheets_translation_jsons/${locale}.json`,
+    `webflow_crowdin/worksheets_translation_jsons/without_grade/${locale}.json`,
     Object.assign(convertedJSON)
   );
   console.log(`Finished translation for ${locale}`);
@@ -68,14 +70,14 @@ async function start(locale, masterJSONData) {
 
 async function main() {
   const masterJSONData = readJSONFile(
-    `webflow_crowdin/worksheets_translation_jsons/with_grade/master.json`
+    `webflow_crowdin/worksheets_translation_jsons/without_grade/master.json`
   );
   const allLocales = ["es", "id", "pl", "pt", "th", "vi"];
   for (const locale of allLocales) {
     await start(locale, masterJSONData);
   }
   writeJSONFile(
-    `webflow_crowdin/worksheets_translation_jsons/with_grade/master.json`,
+    `webflow_crowdin/worksheets_translation_jsons/without_grade/master.json`,
     Object.assign(masterJSONData)
   );
 }
