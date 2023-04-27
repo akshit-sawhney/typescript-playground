@@ -27,16 +27,25 @@ const closeSetup = async () => {
 }
 
 const Screenshot = async (quizId) => {
+  // browser = await puppeteer.launch();
+  // page = await browser.newPage();
+
   const pageUrl = `https://quizizz.com/print/worksheet/${quizId}`
 
-  await page.goto(pageUrl);
+  await page.goto(pageUrl, { waitUntil: 'networkidle0' });
 
-  await page.waitForSelector("#worksheet-id");
+  // await page.waitForSelector("#worksheet-id");
 
   await page.screenshot({
     path: `./media/images/${quizId}.png`,
 
-    fullPage: true,
+    // fullPage: true,
+    clip: {
+      x: 0,
+      y: 0,
+      width: 794,
+      height: 1123
+    }
   });
 };
 
