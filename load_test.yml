@@ -1,0 +1,32 @@
+config:
+  target: 'https://dev.quizizz.com'
+  phases:
+    - duration: 60
+      arrivalRate: 150
+  payload:
+    path: "query_values.csv"
+    fields:
+      - "query"
+  defaults:
+    headers:
+      accept: 'application/json, text/plain, */*'
+      'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'
+      'cache-control': 'no-cache'
+      'cookie': 'QUIZIZZ_EXP_LEVEL=live; QUIZIZZ_EXP_NAME=main_main; QUIZIZZ_EXP_SLOT=8; QUIZIZZ_EXP_VERSION=v2; dev_sid=Cthg3EE93rsoZ-LVqpvrb0Lke1vKig3m2D-fA-6C_tupQzh7lx3sIyJBeJsDuzNP7nnJXKHmpkrzumTe6bBPWxVLRuEG0Uk.jhpUR_SG-je8jw5eZ83gwA.lKtKMcYzLSPzx2WS; locale=en; quizizz_uid=ef30e23b-3dbf-4cdd-8e83-9a1427c95073'
+      'origin': 'http://localhost:3002'
+      'pragma': 'no-cache'
+      'referer': 'http://localhost:3002/'
+      'sec-ch-ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"'
+      'sec-ch-ua-mobile': '?0'
+      'sec-ch-ua-platform': '"macOS"'
+      'sec-fetch-dest': 'empty'
+      'sec-fetch-mode': 'cors'
+      'sec-fetch-site': 'cross-site'
+      'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
+      'x-amzn-trace-id': 'Root=1-661e25d2-fdd556ed22c2c66559add48d;Parent=cab71b712c5f639a;Sampled=1'
+      'x-q-request-context-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMzODc5NWE5LTdjMmYtNGIzNC1hYTJlLTY3N2RiNGVhNzgxNyIsImlhdCI6MTcxMjY3MDU5OCwiZXhwIjoxNzQ0MjA2NTk4fQ.wC0tJgebHPpcgmEzFACeIpwBb_Yslr7xKLz7aBj9U0E'
+      'x-q-traceid': 'Root=1-661e25d2-fdd556ed22c2c66559add48d;Parent=cab71b712c5f639a;Sampled=1'
+scenarios:
+  - flow:
+    - get:
+        url: "/_api/main/search/v1/private?from=0&size=12&sortKey=_score&personal=true&filterList=%7B%22grade_type.aggs%22%3A%5B%5D%2C%22grades%22%3A%5B%5D%2C%22occupation%22%3A%5B%5D%2C%22cloned%22%3A%5Btrue%2Cfalse%5D%2C%22subjects.aggs%22%3A%5B%5D%2C%22lang.aggs%22%3A%5B%5D%2C%22type%22%3A%5B%22quiz%22%2C%22presentation%22%2C%22video-quiz%22%2C%22reading-quiz%22%5D%7D&rangeList=%7B%22numberOfQuestions%22%3A%5B%5D%7D&sessionId=162e9b6b-7b4e-4a4a-9303-214b151b1ee8&queryId=639aef07ab45de001e54f891-1713251794026&source=Teleport&page=EditorPage&query={{ query }}"

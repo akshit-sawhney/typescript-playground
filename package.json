@@ -12,6 +12,7 @@
   "dependencies": {
     "@akshendra/sqs": "github:akshendra/sqs-wrapper#v0.1.2",
     "@google-cloud/translate": "^7.2.0",
+    "@os-team/youtube-captions": "^3.0.2",
     "@quizizz/kafka": "github:quizizz/kafka-wrapper#v1.0.0",
     "aws-sdk": "^2.1273.0",
     "axios": "^1.6.2",
@@ -21,6 +22,8 @@
     "dotenv": "^16.0.3",
     "dynamoose": "^3.1.0",
     "file-type": "^18.0.0",
+    "google-auth-library": "^9.9.0",
+    "googleapis": "^134.0.0",
     "html-entities": "^2.4.0",
     "htmlparser2": "^9.0.0",
     "is-svg": "^4.3.2",
@@ -37,6 +40,7 @@
     "svg2img": "^1.0.0-beta.2",
     "svg2png": "^4.1.1",
     "typescript": "^4.9.4",
-    "videojs-wavesurfer": "^3.9.0"
+    "videojs-wavesurfer": "^3.9.0",
+    "youtube-dl": "^3.5.0"
   }
 }
