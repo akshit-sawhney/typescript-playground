@@ -1,0 +1,25 @@
+config:
+  target: 'https://dev-services-2.quizizz.com'
+  phases:
+    - duration: 60
+      arrivalRate: 1000
+  headers:
+    Content-Type: 'application/json'
+    api-secretsss: '018b2af344047d6a760fc8b8a23d82baa115bc9f14fdc5a6de13f18cdb21b993'
+    Cookie: '_sid=-kPNRDHHrctWX-tcQ_R2CaLrcV-QCVFTIl4aU2qNj1m63kNmihcDN3Nn9q76MFX9nfmEQTVuIEEiIP8uQFbEvSRHtXrE2iA.jLWUad2UdjrNkchXlojDKQ.TgneQZoAkympSDvS'
+  payload:
+    path: './gTranslate.csv'
+    fields:
+      - content
+      - to
+      - from
+      - format
+scenarios:
+  - flow:
+      - post:
+          url: '/_trnserver/main/v1/translations/googleTranslate'
+          json:
+            content: '{{ content }}'
+            to: '{{ to }}'
+            from: '{{ from }}'
+            format: '{{ format }}'

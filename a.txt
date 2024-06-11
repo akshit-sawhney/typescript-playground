@@ -1,0 +1,2 @@
+here:  /Users/akshit/backend_repos/typescript-playground/fontAwesome/files/solid /Users/akshit/backend_repos/typescript-playground/fontAwesome/files/regular
+Results have been written to output.json

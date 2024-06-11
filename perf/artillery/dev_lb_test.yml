@@ -1,0 +1,20 @@
+config:
+  target: 'http://internal-ProdGatewayServicePrivateLB-1138000624.us-east-1.elb.amazonaws.com'
+  phases:
+    - duration: 60  # Duration of the test in seconds
+      arrivalRate: 50  # Number of new virtual users per second
+  defaults:
+    headers:
+      Cookie: "_sid=-kPNRDHHrctWX-tcQ_R2CaLrcV-QCVFTIl4aU2qNj1m63kNmihcDN3Nn9q76MFX9nfmEQTVuIEEiIP8uQFbEvSRHtXrE2iA.jLWUad2UdjrNkchXlojDKQ.TgneQZoAkympSDvS; suid=5ea27b99-b1d4-4c2c-8324-a11f527237e5; QUIZIZZ_EXP_LEVEL=live; QUIZIZZ_EXP_NAME=main_main; QUIZIZZ_EXP_SLOT=8; QUIZIZZ_EXP_VERSION=v2; locale=en; quizizz_uid=d98e35f8-13d1-4d0a-983a-17614c130917"
+scenarios:
+  - flow:
+      - get:
+          url: "/_api/main/_meta/ab"
+          name: "Main"
+      - get:
+          url: "/_api/contentDiscovery/_meta/ab"
+          name: "contentDiscovery"
+      - get:
+          url: "/_api/qfw/_meta/ab"
+          name: "qfw"
+
