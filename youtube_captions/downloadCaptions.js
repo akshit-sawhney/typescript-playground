@@ -3,14 +3,15 @@ var readline = require('readline');
 var { google } = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 const path = require('path');
+const axios = require('axios');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/youtube-nodejs-quickstart.json
 var SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl', 'https://www.googleapis.com/auth/youtubepartner'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
   process.env.USERPROFILE) + '/.credentials/';
-var TOKEN_PATH = TOKEN_DIR + 'youtube-nodejs-quickstart1.json';
-const outputFilePath = 'output.bin'; // Output file path
+var TOKEN_PATH = TOKEN_DIR + 'youtube-nodejs-quickstart2.json';
+const outputFilePath = 'output.srt'; // Output file path
 
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', function processClientSecrets(err, content) {
@@ -21,6 +22,28 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   // Authorize a client with the loaded credentials, then call the YouTube API.
   authorize(JSON.parse(content), getCaptions);
 });
+
+function srtToJson(srtContent) {
+  const subtitleEntries = [];
+  const subtitleBlocks = srtContent.trim().split('\n\n');
+
+  subtitleBlocks.forEach(block => {
+      const lines = block.split('\n');
+      const sequenceNumber = parseInt(lines[0]);
+      const timeMatch = lines[1].match(/(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})/);
+      const startTime = timeMatch[1];
+      const endTime = timeMatch[2];
+      const text = lines.slice(2).join('\n');
+
+      subtitleEntries.push({
+          startTime: startTime,
+          endTime: endTime,
+          text: text
+      });
+  });
+
+  return JSON.stringify(subtitleEntries, null, 2);
+}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -113,29 +136,22 @@ function getCaptions(auth) {
   console.log('7: ', auth);
   var service = google.youtube('v3');
   console.log('8: ');
-  service.captions.download({
-    id: 'AUieDaZK5UUBQ3g2KcQ3rspMcmyDak22FIWKRzzdepTL',
-    auth: auth,
-  }, function (err, response) {
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
+  console.log('8.1: ', JSON.stringify(auth));
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: 'https://www.googleapis.com/youtube/v3/captions/AUieDaYGT9K25OrwQL-w34gwTGYu-h9cseZYI2gCxCDCVi8c?tfmt=srt',
+    headers: { 
+      'Authorization': 'Bearer ya29.a0AXooCgs9fPf6tkqonPgB5JeALY3TQ5MqW0nxVTTUbN5S7XBWgCIUZ0s7rJjzgEY41ikBVD_BpKnNsgHyKJa3n-_SlOdGbLe8rnHIuTkUwtIj5Z7ztgZvMjrKOSrmUNoSe96fcEcRy4sxoXe-qKnTdtA_Pv3TjVeVD5V956oVcMBbaCgYKAcISARMSFQHGX2MijjuPWuCZjZaVxALlWt41vw0179'
     }
-    response.arrayBuffer((bufferError, fileBuffer) => {
-      if (bufferError) {
-        callback(bufferError);
-        return;
-      }
-
-      // Write the binary data to a file
-      fs.writeFile(outputFilePath, fileBuffer, (writeError) => {
-        if (writeError) {
-          callback(writeError);
-          return;
-        }
-
-        callback(null, `Binary file saved successfully at ${outputFilePath}`);
-      });
-    }); // Read the binary data
+  };
+  
+  axios.request(config)
+  .then((response) => {
+    console.log(response.data);
+    console.log('Captions ', srtToJson(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
   });
 }

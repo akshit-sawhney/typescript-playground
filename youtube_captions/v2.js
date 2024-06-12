@@ -29,7 +29,7 @@ async function getCaptions(videoId) {
 }
 
 // Example usage
-const videoId = 'U_LlX4t0A9I'; // Replace with actual video ID
+const videoId = 'OV72qTOU7_U'; // Replace with actual video ID
 getCaptions(videoId)
   .then(captions => {
     console.log('Captions:', captions);
