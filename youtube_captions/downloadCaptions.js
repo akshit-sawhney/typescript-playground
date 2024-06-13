@@ -10,7 +10,7 @@ const axios = require('axios');
 var SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl', 'https://www.googleapis.com/auth/youtubepartner'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
   process.env.USERPROFILE) + '/.credentials/';
-var TOKEN_PATH = TOKEN_DIR + 'youtube-nodejs-quickstart2.json';
+var TOKEN_PATH = TOKEN_DIR + 'youtube-nodejs-quickstart3.json';
 const outputFilePath = 'output.srt'; // Output file path
 
 // Load client secrets from a local file.
