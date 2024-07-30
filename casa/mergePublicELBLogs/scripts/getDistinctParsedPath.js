@@ -18,7 +18,7 @@ async function main() {
         } else {
             finalOutput[value.parsedPath] = {
                 count: value.total,
-                componentType: value.componentType,
+                parsedComponentType: value.parsedComponentType,
                 method: value.method,
             };
         }
@@ -32,7 +32,7 @@ async function main() {
             } else {
                 finalOutput[value.parsedPath] = {
                     count: value.total,
-                    componentType: value.componentType,
+                    parsedComponentType: value.parsedComponentType,
                     method: value.method,
                 };
             }
@@ -43,6 +43,8 @@ async function main() {
         finalOutputArray.push({
             parsedPath: key,
             total: value.count,
+            parsedComponentType: value.parsedComponentType,
+            method: value.method,
         });
     });
     finalOutputArray = _.orderBy(finalOutputArray, ['total'], ['desc']);
