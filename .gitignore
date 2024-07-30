@@ -6,3 +6,4 @@ media/images/
 constants/index.js
 webflow_crowdin/core_project_jsons/
 webflow_crowdin/existing_project_jsons/
+casa/mergePublicELBLogs/files/*
