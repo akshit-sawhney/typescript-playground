@@ -1,11 +1,11 @@
 const _ = require('lodash');
 const { readJSONFile } = require('./helpers/readFile');
 const { writeJSONFile } = require('./helpers/writeFile');
-const WRITE_PATH = 'casa/mergePublicELBLogs/files/trimmedQuizizzRoutesUnique.json'
+const WRITE_PATH = 'casa/mergePublicELBLogs/files/trimmedQuizServiceEndpointsUnique.json'
 
 async function main() {
 
-    const data = await readJSONFile('casa/mergePublicELBLogs/files/trimmedQuizizzRoutes.json');
+    const data = await readJSONFile('casa/mergePublicELBLogs/files/trimmedQuizServiceEndpoints.json');
 
 // Group by path
 const groupedByPath = _.groupBy(data, 'path');

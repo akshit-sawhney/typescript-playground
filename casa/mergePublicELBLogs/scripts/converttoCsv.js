@@ -2,11 +2,11 @@
 const { Parser } = require('json2csv');
 const fs = require('fs');
 const { readJSONFile } = require('./helpers/readFile');
-const OUTPUT_CSV_PATH = 'casa/mergePublicELBLogs/files/trimmedQuizizzRoutesUnique.csv'
+const OUTPUT_CSV_PATH = 'casa/mergePublicELBLogs/files/trimmedGameServiceRoutes.csv';
 
 async function main() {
     // Sample JSON data
-const jsonData = await readJSONFile('casa/mergePublicELBLogs/files/trimmedQuizizzRoutesUnique.json');
+const jsonData = await readJSONFile('casa/mergePublicELBLogs/files/trimmedGameServiceRoutes.json');
 
 // Create a new Parser object
 const json2csvParser = new Parser();
